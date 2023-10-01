@@ -1,0 +1,290 @@
+{
+	"info": {
+		"_postman_id": "5f6a3141-acb6-4edc-bc81-a2ee5ff1dca6",
+		"name": "Hospital API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30165381"
+	},
+	"item": [
+		{
+			"name": "Register Doctor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"doctorId\",pm.response.json().data._id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"doctor1\",\r\n    \"password\":\"123\",\r\n    \"name\":\"gopal\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/doctors/register",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"doctors",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Doctor login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"token\",\"Bearer \"+pm.response.json().token);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"doctor1\",\r\n    \"password\":\"123\",\r\n    \"name\":\"gopal\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/doctors/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"doctors",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patients Register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"patientId\",pm.response.json().patient._id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"phone\":\"9199\",\r\n    \"age\":\"12\",\r\n    \"name\":\"patient1\",\r\n    \"gender\":\"Male\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/patients/register",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"patients",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patients Create report",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"doctor\":\"{{doctorId}}\",\r\n    \"status\":\"Negative\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/patients/{{patientId}}/create_report",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"patients",
+						"{{patientId}}",
+						"create_report"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patients Create report Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"doctor\":\"{{doctorId}}\",\r\n    \"status\":\"Travelled-Quarantine\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/patients/{{patientId}}/create_report",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"patients",
+						"{{patientId}}",
+						"create_report"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patients Create report Copy 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"doctor\":\"{{doctorId}}\",\r\n    \"status\":\"Symptoms-Quarantine\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/patients/{{patientId}}/create_report",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"patients",
+						"{{patientId}}",
+						"create_report"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patients all reports",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/patients/{{patientId}}/all_reports",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"patients",
+						"{{patientId}}",
+						"all_reports"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patients all reports Copy",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/reports/Negative",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"reports",
+						"Negative"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
