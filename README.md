@@ -3,6 +3,12 @@
 This is a RESTful API designed for a Hospital to manage the health records of COVID-19 patients. It allows the hospital staff (doctors) to register and log in, register patients, and create reports for each visit. It also provides endpoints to retrieve a patient's records and all reports filtered by status.
 The API is built using Node.js and MongoDB, and uses JSON Web Tokens (JWT) for authentication. The folder structure is organized into models, controllers, and routes for scalability and maintainability.
 
+
+
+# Live
+
+https://hospital-api-40id.onrender.com
+
 ## Installation
 
 To install and run the application, follow the steps below:
