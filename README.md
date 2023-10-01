@@ -42,9 +42,9 @@ CN Hospital API requires the following dependencies:
 
 ### Patients
 
--   **POST** `/patients/register` - Register a new patient with a phone number. If the patient already exists, the existing patient info is returned.
+-   **POST** `/patients/register` - Register a new patient with a phone number. If the patient already exists, the existing patient info is returned is currently authenticated.
 -   **POST** `/patients/:id/create_report` - Create a new report for the patient with the given id, which includes the status and the date. The report is created by the doctor who is currently authenticated.
--   **GET** `/patients/:id/all_reports` - List all the reports for the patient with the given id, sorted from oldest to newest.
+-   **GET** `/patients/:id/all_reports` - List all the reports for the patient with the given id, sorted from oldest to newest is currently authenticated.
 
 ### Reports
 
